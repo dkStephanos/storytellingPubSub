@@ -1,0 +1,2 @@
+class Tell < ApplicationRecord
+end

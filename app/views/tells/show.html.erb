@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @tell.title %>
+</p>
+
+<p>
+  <strong>Tellername:</strong>
+  <%= @tell.tellerName %>
+</p>
+
+<p>
+  <strong>Keyword:</strong>
+  <%= @tell.keyword %>
+</p>
+
+<%= link_to 'Edit', edit_tell_path(@tell) %> |
+<%= link_to 'Back', tells_path %>

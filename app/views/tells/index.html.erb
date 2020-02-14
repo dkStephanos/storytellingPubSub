@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tells</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Tellername</th>
+      <th>Keyword</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tells.each do |tell| %>
+      <tr>
+        <td><%= tell.title %></td>
+        <td><%= tell.tellerName %></td>
+        <td><%= tell.keyword %></td>
+        <td><%= link_to 'Show', tell %></td>
+        <td><%= link_to 'Edit', edit_tell_path(tell) %></td>
+        <td><%= link_to 'Destroy', tell, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tell', new_tell_path %>
