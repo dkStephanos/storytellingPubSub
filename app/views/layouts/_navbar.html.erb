@@ -7,9 +7,11 @@
           <li class="nav-item">
             <a class="nav-link" href="/tells">Tell Library</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/subscriptions">Subcriptions</a>
-          </li>
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <a class="nav-link" href="/subscriptions">My Subcriptions</a>
+            </li>
+          <% end %>
         </ul>
     <form class="form-inline">
       <% if user_signed_in? %>
