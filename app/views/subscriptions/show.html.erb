@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<div class="jumbotron">
+	<p>
+	  <strong>User:</strong>
+	  <%= @subscription.user_id %>
+	</p>
+
+	<p>
+	  <strong>Type:</strong>
+	  <%= @subscription.type %>
+	</p>
+
+	<%= link_to 'Edit', edit_subscription_path(@subscription) %> |
+	<%= link_to 'Back', subscriptions_path %>
+</div>

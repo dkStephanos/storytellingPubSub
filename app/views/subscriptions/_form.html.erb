@@ -1,0 +1,29 @@
+<div class="jumbotron">
+  <%= form_with(model: subscription, local: true) do |form| %>
+    <% if subscription.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+
+        <ul>
+          <% subscription.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :user_id %>
+      <%= form.number_field :user_id, :class => "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :type %>
+      <%= form.number_field :type, :class => "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Submit", :class => "btn btn-primary"%>
+    </div>
+  <% end %>
+</div>
