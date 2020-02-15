@@ -1,0 +1,19 @@
+<div class="jumbotron">
+		<% if user_signed_in? %>
+		<div class="row">
+			<div class="col-2">
+				<h1>Home</h1>
+				<p>Welcome, <%= current_user.email %></p>
+			</div>
+			<div class="col-1"></div>
+	  
+	  		<div class="col-9">
+			  	<%= render 'notifications/notification_list', notifications: @notifications %>
+			</div>
+		</div>     
+		<% else %>
+			<h2>Welcome to the ISC Tell Library!</h2>
+			<p>Click below to create an account or log in, and start making subscriptions today!</p>
+		  	<%= link_to 'Login', new_user_session_path, :class => "btn btn-primary" %>  	
+		<% end %>
+</div>
