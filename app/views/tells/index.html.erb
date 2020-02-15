@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tells</h1>
+<div class="jumbotron">
+  <h1>Tells</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Title</th>
@@ -28,4 +29,5 @@
 
 <br>
 
-<%= link_to 'New Tell', new_tell_path %>
+<%= link_to 'New Tell', new_tell_path, :class => "btn btn-primary" %>
+</div>

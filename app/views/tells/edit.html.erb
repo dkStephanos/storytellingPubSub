@@ -1,6 +1,8 @@
-<h1>Editing Tell</h1>
+<div class="jumbotron">
+	<h1>Editing Tell</h1>
 
 <%= render 'form', tell: @tell %>
 
-<%= link_to 'Show', @tell %> |
-<%= link_to 'Back', tells_path %>
+<%= link_to 'Show', @tell, :class => "btn btn-primary" %> |
+<%= link_to 'Back', tells_path, :class => "btn btn-primary" %>
+</div>

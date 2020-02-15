@@ -1,4 +1,5 @@
-<%= form_with(model: tell, local: true) do |form| %>
+<div class="jumbotron">
+  <%= form_with(model: tell, local: true) do |form| %>
   <% if tell.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(tell.errors.count, "error") %> prohibited this tell from being saved:</h2>
@@ -11,22 +12,23 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, :class => "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :tellerName %>
-    <%= form.text_field :tellerName %>
+    <%= form.text_field :tellerName, :class => "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :keyword %>
-    <%= form.text_field :keyword %>
+    <%= form.text_field :keyword, :class => "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions form-group">
+    <%= form.submit "Submit", :class => "btn btn-primary" %>
   </div>
 <% end %>
+</div>
