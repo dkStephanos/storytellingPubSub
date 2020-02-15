@@ -18,11 +18,12 @@
     <% @subscriptions.each do |subscription| %>
       <tr>
         <% if subscription.title %>
-          <td><%= subscription.title %></td>
+          <td><%= subscription.title == "" ? "*ALL*" : subscription.title %></td>
         <% elsif subscription.teller %>
-          <td><%= subscription.teller %></td>
+          <td><%= subscription.teller == "" ? "*ALL*" : subscription.teller %></td>
         <% elsif subscription.keyword %>
-          <td><%= subscription.keyword %></td>
+          <td><%= subscription.keyword == "" ? "*ALL*" : subscription.keyword %></td>
+        <% else %>
         <% end %>
         <td><%= subscription.subscription_type %></td>
         <td><%= link_to 'Details', subscription, :class => "btn btn-secondary" %></td>

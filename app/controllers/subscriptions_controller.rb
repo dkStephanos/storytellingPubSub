@@ -25,26 +25,42 @@ class SubscriptionsController < ApplicationController
   # POST /subscriptions.json
   def create
     tag_value = subscription_params["user_entry"]
-    
-    #Builds the subscription object for current user, 
-    #setting user_entry to the correct tag string (based on subcription type enum)
+
+    #If the tag_value is empty, we match everything, so build a notification for the entire Tell collection
+    #Else search through Tell collection by subscription type, generating notifications for matching tags
     case subscription_params["subscription_type"]
-    #Type = title
-    when "0"
-      @subscription = current_user.subscriptions.build({"title"=>tag_value, "subscription_type"=>0})
-      
-      tells = Tell.where(title: tag_value)
-      tells.each do |tell|
-        @subscription.notifications.build({"tell_id"=>tell.id})
+      #Type = title
+      when "0"
+        @subscription = current_user.subscriptions.build({"title"=>tag_value, "subscription_type"=>0})
+        
+        tells = Tell.where(title: tag_value)
+        tells.each do |tell|
+          @subscription.notifications.build({"tell_id"=>tell.id})
+        end
+      #Type = teller
+      when "1"
+        @subscription = current_user.subscriptions.build({"teller"=>tag_value, "subscription_type"=>1})
+
+        tells = Tell.where(tellerName: tag_value)
+        tells.each do |tell|
+          @subscription.notifications.build({"tell_id"=>tell.id})
+        end
+      #Type = keyword
+      when "2"
+        @subscription = current_user.subscriptions.build({"keyword"=>tag_value, "subscription_type"=>2})
+
+        tells = Tell.where(keyword: tag_value)
+        tells.each do |tell|
+          @subscription.notifications.build({"tell_id"=>tell.id})
+        end
+      else
+        puts "Something went wrong..."
       end
-    #Type = teller
-    when "1"
-      @subscription = current_user.subscriptions.build({"teller"=>tag_value, "subscription_type"=>1})
-    #Type = keyword
-    when "2"
-      @subscription = current_user.subscriptions.build({"keyword"=>tag_value, "subscription_type"=>2})
-    else
-      puts "Something went wrong..."
+    if tag_value == ""
+      tells = Tell.all
+    end
+    tells.each do |tell|
+          @subscription.notifications.build({"tell_id"=>tell.id})
     end
 
     respond_to do |format|
