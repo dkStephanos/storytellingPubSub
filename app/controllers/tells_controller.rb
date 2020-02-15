@@ -1,4 +1,5 @@
 class TellsController < ApplicationController
+  include Wisper::Publisher
   before_action :set_tell, only: [:show, :edit, :update, :destroy]
 
   # GET /tells
@@ -28,9 +29,11 @@ class TellsController < ApplicationController
 
     respond_to do |format|
       if @tell.save
+        publish(:tell_create, @tell)
         format.html { redirect_to @tell, notice: 'Tell was successfully created.' }
         format.json { render :show, status: :created, location: @tell }
       else
+        publish(:tell_errors, @tell)
         format.html { render :new }
         format.json { render json: @tell.errors, status: :unprocessable_entity }
       end
