@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <%= render "layouts/navbar" %>
+    <%= render "layouts/navbar", notificationCount: current_user.subscriptions.to_a.collect{|v| v.notifications.to_a }.flatten.count %>
     <% if notice %>
         <p class="alert alert-success mb-0"><%= notice %></p>
     <% end %>

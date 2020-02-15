@@ -1,27 +1,31 @@
 <div>
   <h2>Notifications</h2>
-  <table class="table">
-  <thead>
-    <tr>
-      <th>Tell Title</th>
-      <th>Tell Teller</th>
-      <th>Tell Keyword</th>
-      <th>Notification Type</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+  <% if notifications.empty? %>
+    <p>No new notifications</p>  
+  <% else %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Tell Title</th>
+          <th>Tell Teller</th>
+          <th>Tell Keyword</th>
+          <th>Notification Type</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% notifications.each do |notification| %>
-      <tr>
-        <td><%= notification.tell.title %></td>
-        <td><%= notification.tell.tellerName %></td>
-        <td><%= notification.tell.keyword %></td>
-        <td><%= notification.subscription.subscription_type %></td>
-        <td><%= link_to 'View Tell', notification.tell, :class => "btn btn-secondary" %></td>
-        <td><%= link_to 'Dismiss', notification, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-primary" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% notifications.each do |notification| %>
+          <tr>
+            <td><%= notification.tell.title %></td>
+            <td><%= notification.tell.tellerName %></td>
+            <td><%= notification.tell.keyword %></td>
+            <td><%= notification.subscription.subscription_type %></td>
+            <td><%= link_to 'View Tell', notification.tell, :class => "btn btn-secondary" %></td>
+            <td><%= link_to 'Dismiss', notification, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-primary" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </div>
