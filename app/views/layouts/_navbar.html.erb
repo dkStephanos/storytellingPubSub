@@ -1,0 +1,14 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="/">Home</a>
+  <form class="form-inline">
+    <% if user_signed_in? %>
+
+  <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => "btn btn-primary") %>        
+
+<% else %>
+
+  	<%= link_to 'Login', new_user_session_path, :class => "btn btn-primary" %>
+
+<% end %>
+  </form>
+</nav>
