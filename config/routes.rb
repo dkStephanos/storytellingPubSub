@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :notifications
   resources :subscriptions
   resources :tells
   devise_for :users
