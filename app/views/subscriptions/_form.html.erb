@@ -13,14 +13,18 @@
     <% end %>
 
     <div class="field">
-      <%= form.label :user_id %>
-      <%= form.number_field :user_id, :class => "form-control" %>
+      <%= form.label "Enter Title/Teller name or Keyword" %>
+      <%= form.text_field :user_entry, :class => "form-control" %>
     </div>
 
+    <br/>
+
     <div class="field">
-      <%= form.label :type %>
-      <%= form.number_field :type, :class => "form-control" %>
+      <%= form.label :subscription_type %>
+      <%= form.select :subscription_type, Subscription.subscription_types, {}, :class => "form-control" %>
     </div>
+
+    <br/>
 
     <div class="actions">
       <%= form.submit "Submit", :class => "btn btn-primary"%>

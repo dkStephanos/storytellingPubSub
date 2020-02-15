@@ -1,14 +1,38 @@
 <p id="notice"><%= notice %></p>
 
 <div class="jumbotron">
+	<h1>Subscription Details</h1>
 	<p>
 	  <strong>User:</strong>
-	  <%= @subscription.user_id %>
+	  <%= @subscription.user.email %>
 	</p>
+
+	<% if @subscription.title %>
+
+        <p>
+		  <strong>Title:</strong>
+		  <%= @subscription.title %>
+		</p>        
+
+      <% elsif @subscription.teller %>
+
+      	<p>
+	 	  <strong>Teller:</strong>
+	  	  <%= @subscription.teller %>
+		</p>
+
+	  <% else %>
+
+      	<p>
+	 	  <strong>Keyword:</strong>
+	  	  <%= @subscription.keyword %>
+		</p>
+
+      <% end %>
 
 	<p>
 	  <strong>Type:</strong>
-	  <%= @subscription.type %>
+	  <%= @subscription.subscription_type %>
 	</p>
 
 	<%= link_to 'Edit', edit_subscription_path(@subscription) %> |

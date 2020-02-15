@@ -24,7 +24,20 @@ class SubscriptionsController < ApplicationController
   # POST /subscriptions
   # POST /subscriptions.json
   def create
-    @subscription = Subscription.new(subscription_params)
+    type_value = subscription_params["user_entry"]
+   
+    #Builds the subscription object for current user, 
+    #setting user_entry to the correct type string (based on subcription type enum)
+    case subscription_params["subscription_type"]
+    when "0"
+      @subscription = current_user.subscriptions.build({"title"=>type_value, "subscription_type"=>0})
+    when "1"
+      @subscription = current_user.subscriptions.build({"teller"=>type_value, "subscription_type"=>1})
+    when "2"
+      @subscription = current_user.subscriptions.build({"keyword"=>type_value, "subscription_type"=>2})
+    else
+      puts "Something went wrong..."
+    end
 
     respond_to do |format|
       if @subscription.save
@@ -69,6 +82,6 @@ class SubscriptionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def subscription_params
-      params.require(:subscription).permit(:user_id, :type)
+      params.require(:subscription).permit(:user_entry, :subscription_type)
     end
 end
