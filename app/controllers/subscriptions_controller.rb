@@ -4,7 +4,7 @@ class SubscriptionsController < ApplicationController
   # GET /subscriptions
   # GET /subscriptions.json
   def index
-    @subscriptions = Subscription.all
+    @subscriptions = current_user.subscriptions.all
   end
 
   # GET /subscriptions/1
@@ -24,17 +24,17 @@ class SubscriptionsController < ApplicationController
   # POST /subscriptions
   # POST /subscriptions.json
   def create
-    type_value = subscription_params["user_entry"]
+    tag_value = subscription_params["user_entry"]
    
     #Builds the subscription object for current user, 
-    #setting user_entry to the correct type string (based on subcription type enum)
+    #setting user_entry to the correct tag string (based on subcription type enum)
     case subscription_params["subscription_type"]
     when "0"
-      @subscription = current_user.subscriptions.build({"title"=>type_value, "subscription_type"=>0})
+      @subscription = current_user.subscriptions.build({"title"=>tag_value, "subscription_type"=>0})
     when "1"
-      @subscription = current_user.subscriptions.build({"teller"=>type_value, "subscription_type"=>1})
+      @subscription = current_user.subscriptions.build({"teller"=>tag_value, "subscription_type"=>1})
     when "2"
-      @subscription = current_user.subscriptions.build({"keyword"=>type_value, "subscription_type"=>2})
+      @subscription = current_user.subscriptions.build({"keyword"=>tag_value, "subscription_type"=>2})
     else
       puts "Something went wrong..."
     end

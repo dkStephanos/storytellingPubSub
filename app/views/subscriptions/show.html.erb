@@ -7,31 +7,19 @@
 	  <%= @subscription.user.email %>
 	</p>
 
-	<% if @subscription.title %>
-
-        <p>
-		  <strong>Title:</strong>
+	<p>
+	  <strong>Tag:</strong>
+	  <% if @subscription.title %>
 		  <%= @subscription.title %>
-		</p>        
-
       <% elsif @subscription.teller %>
-
-      	<p>
-	 	  <strong>Teller:</strong>
 	  	  <%= @subscription.teller %>
-		</p>
-
 	  <% else %>
-
-      	<p>
-	 	  <strong>Keyword:</strong>
 	  	  <%= @subscription.keyword %>
-		</p>
-
       <% end %>
+	</p> 
 
 	<p>
-	  <strong>Type:</strong>
+	  <strong>Subscription Type:</strong>
 	  <%= @subscription.subscription_type %>
 	</p>
 

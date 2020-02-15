@@ -1,13 +1,15 @@
 <div class="jumbotron">
   <p id="notice"><%= notice %></p>
 
-<h1>Subscriptions</h1>
+<h2><%= current_user.email %>'s Subscriptions</h2>
+
+<br>
 
 <table class="table">
   <thead>
     <tr>
-      <th>User</th>
-      <th>Type</th>
+      <th>Tag</th>
+      <th>Subscription Type</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,11 +17,17 @@
   <tbody>
     <% @subscriptions.each do |subscription| %>
       <tr>
-        <td><%= subscription.user_id %></td>
-        <td><%= subscription.type %></td>
-        <td><%= link_to 'Show', subscription %></td>
-        <td><%= link_to 'Edit', edit_subscription_path(subscription) %></td>
-        <td><%= link_to 'Destroy', subscription, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if subscription.title %>
+          <td><%= subscription.title %></td>
+        <% elsif subscription.teller %>
+          <td><%= subscription.teller %></td>
+        <% elsif subscription.keyword %>
+          <td><%= subscription.keyword %></td>
+        <% end %>
+        <td><%= subscription.subscription_type %></td>
+        <td><%= link_to 'Details', subscription, :class => "btn btn-secondary" %></td>
+        <td><%= link_to 'Edit', edit_subscription_path(subscription), :class => "btn btn-secondary" %></td>
+        <td><%= link_to 'Unsubscribe', subscription, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-primary" %></td>
       </tr>
     <% end %>
   </tbody>
