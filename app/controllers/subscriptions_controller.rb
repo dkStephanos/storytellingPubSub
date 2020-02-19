@@ -32,27 +32,18 @@ class SubscriptionsController < ApplicationController
       #Type = title
       when "0"
         @subscription = current_user.subscriptions.build({"title"=>tag_value, "subscription_type"=>0})
-        
+
         tells = Tell.where(title: tag_value)
-        tells.each do |tell|
-          @subscription.notifications.build({"tell_id"=>tell.id})
-        end
       #Type = teller
       when "1"
         @subscription = current_user.subscriptions.build({"teller"=>tag_value, "subscription_type"=>1})
 
         tells = Tell.where(tellerName: tag_value)
-        tells.each do |tell|
-          @subscription.notifications.build({"tell_id"=>tell.id})
-        end
       #Type = keyword
       when "2"
         @subscription = current_user.subscriptions.build({"keyword"=>tag_value, "subscription_type"=>2})
 
         tells = Tell.where(keyword: tag_value)
-        tells.each do |tell|
-          @subscription.notifications.build({"tell_id"=>tell.id})
-        end
       else
         puts "Something went wrong..."
       end
