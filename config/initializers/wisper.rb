@@ -1,1 +1,1 @@
-Wisper.subscribe(TellListener.new)
+Wisper.subscribe(PublishListener.new)

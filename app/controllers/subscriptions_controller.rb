@@ -46,10 +46,12 @@ class SubscriptionsController < ApplicationController
         tells = Tell.where(keyword: tag_value)
       else
         puts "Something went wrong..."
-      end
+    end
+
     if tag_value == ""
       tells = Tell.all
     end
+    
     tells.each do |tell|
           @subscription.notifications.build({"tell_id"=>tell.id})
     end
