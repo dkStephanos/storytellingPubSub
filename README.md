@@ -1,5 +1,5 @@
 # StorytellingPubSub
-![Home Page](Demo Screenshots/03HomePage.png)
+![Home Page](Demo%20Screenshots/03HomePage.png)
 
 A publish-subscribe implementation for storytelling records. Built in Ruby on Rails with sqlite3 database.
 
