@@ -1,24 +1,26 @@
-# README
+# StorytellingPubSub
+![Home Page](Demo Screenshots/03HomePage.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A publish-subscribe implementation for storytelling records. Built in Ruby on Rails with sqlite3 database.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+### Prerequisites
 
-* System dependencies
+Need a Ruby (2.5.1) on Rails (6.0.2) environment
 
-* Configuration
+### Installing Running
 
-* Database creation
+Run 'bundle install'
 
-* Database initialization
+Then 'rake db:migrate'
 
-* How to run the test suite
+Finally 'rails server'
 
-* Services (job queues, cache servers, search engines, etc.)
+## Authors
 
-* Deployment instructions
+* **Koi Stephanos** - *Source Reference* - [What is Pub-Sub?](https://www.toptal.com/ruby-on-rails/the-publish-subscribe-pattern-on-rails)
 
-* ...
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
